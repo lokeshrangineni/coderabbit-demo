@@ -1,0 +1,38 @@
+# CodeRabbit Configuration
+# Documentation: https://docs.coderabbit.ai
+
+language: "en-US"
+
+reviews:
+  # Enable high-level summary of changes
+  high_level_summary: true
+  # Generate poem in review (fun feature)
+  poem: false
+  # Review status to post
+  review_status: true
+  # Collapse walkthrough after certain lines
+  collapse_walkthrough: false
+  # Auto-review on PR open
+  auto_review:
+    enabled: true
+    drafts: false
+
+chat:
+  # Enable chat with CodeRabbit in PR comments
+  auto_reply: true
+
+# Path-based instructions for reviewers
+path_instructions:
+  - path: "**/*.py"
+    instructions: "Check for SQL injection vulnerabilities, hardcoded secrets, and security issues."
+  - path: "**/*.java"
+    instructions: "Check for security vulnerabilities, proper exception handling, and exposed sensitive data."
+  - path: "**/*.js"
+    instructions: "Check for XSS vulnerabilities, eval usage, hardcoded credentials, and React best practices."
+
+# Files to ignore during review
+path_filters:
+  - "!**/node_modules/**"
+  - "!**/target/**"
+  - "!**/*.lock"
+  - "!**/package-lock.json"
