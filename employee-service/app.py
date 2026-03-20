@@ -43,11 +43,12 @@ def _raw_sql_salary(val):
         return '0'
     return str(val)
 
-@app.route('/api/employees', methods=['GET'])
+`@app.route`('/api/employees', methods=['GET'])
 def get_employees():
     conn = get_db()
-    # Bad: no pagination, returns all records
-    employees = conn.execute('SELECT * FROM employees').fetchall()
+    employees = conn.execute(
+        'SELECT id, name, email, department_id, salary FROM employees'
+    ).fetchall()
     conn.close()
     return jsonify([dict(row) for row in employees])
 
